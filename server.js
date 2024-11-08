@@ -189,7 +189,6 @@ page.drawImage(pngImage, {
     // Save resource data to MongoDB
     const newResource = new Resource({
       fileURI: s3Data.Location,
-      // programCode: unitCode.slice(0, 4), // Example logic for program code
       unitCode,
       unitName,
       isNotes,
@@ -205,6 +204,18 @@ page.drawImage(pngImage, {
   } catch (error) {
     console.error('Error in generating or uploading resource:', error);
     res.status(500).json({ error: 'Failed to generate and upload resource' });
+  }
+});
+// New endpoint to get all resources
+app.get('/resources', async (req, res) => {
+  console.log("here");
+  
+  try {
+    const resources = await Resource.find();
+    res.status(200).json(resources);
+  } catch (error) {
+    console.error('Error fetching resources:', error);
+    res.status(500).json({ error: 'Failed to fetch resources' });
   }
 });
 

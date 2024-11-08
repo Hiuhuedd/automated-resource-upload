@@ -15,8 +15,7 @@ const app = express();
 // Enable CORS for specific origins
 app.use(cors({
   origin: [
-    'https://brainstorm-resource-upload.onrender.com', 
-    'https://bstorm-upload.netlify.app',
+    'https://automated-upload.onrender.com/', 
     'http://localhost:3000'
   ],
   credentials: true,

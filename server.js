@@ -218,6 +218,28 @@ app.get('/resources', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch resources' });
   }
 });
+// Define a route for generating the presigned URL
+app.get('/generatePresignedUrl', (req, res) => {
+  const { fileName } = req.query; // File name passed from the client (should be stored somewhere)
+  
+  if (!fileName) {
+    return res.status(400).json({ error: 'File name is required' });
+  }
+
+  const params = {
+    Bucket: process.env.AWS_S3_BUCKET, // Your S3 bucket name
+    Key: fileName, // File name in S3
+    Expires: 60 * 60, // URL expiration time in seconds (1 hour)
+  };
+
+  try {
+    // Generate the presigned URL
+    const url = s3.getSignedUrl('getObject', params);
+    return res.json({ url });
+  } catch (error) {
+    return res.status(500).json({ error: 'Error generating presigned URL' });
+  }
+});
 
 // Start the server
 app.listen(5000, () => {

@@ -235,6 +235,7 @@ app.get('/generatePresignedUrl', (req, res) => {
   try {
     // Generate the presigned URL
     const url = s3.getSignedUrl('getObject', params);
+    console.log(url)
     return res.json({ url });
   } catch (error) {
     return res.status(500).json({ error: 'Error generating presigned URL' });

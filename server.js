@@ -70,7 +70,7 @@ app.post('/generate-and-upload', async (req, res) => {
         messages: [
           {
             role: "system",
-            content: `You are a university professor. Create a CAT out of 40 marks for this unit.No multiple-choice questions or instructions or text styling`,
+            content: `You are a university examiner.set CAT out of 40 marks for this unit with advanced difficulty.No multiple-choice questions or instructions or text styling`,
           },
           {
             role: "user",

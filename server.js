@@ -70,7 +70,7 @@ app.post('/generate-and-upload', async (req, res) => {
         messages: [
           {
             role: "system",
-            content: `You are a university examiner.set CAT out of 40 marks for this unit with advanced difficulty.No multiple-choice questions or instructions or text styling`,
+            content: `You are a university examiner.set challenge CAT out of 40 marks for this unit with advanced difficulty.No multiple-choice questions or instructions or text styling`,
           },
           {
             role: "user",
@@ -109,12 +109,6 @@ const imageWidth = 60; // Adjust width as desired
 const imageHeight = 60; // Adjust height as desired
 
 // Draw the image on the page (adjust x, y position as needed)
-page.drawImage(pngImage, {
-  x: (width - imageWidth) / 2, // Center the image horizontally
-  y: height - 70, // Position below the header and subheader
-  width: imageWidth,
-  height: imageHeight,
-});
 
     // Text content
     const header = `${unitCode} ${unitName}`.toUpperCase();
